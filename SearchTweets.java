@@ -15,38 +15,13 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
  
-/**
- * Searches for Tweets from a twitter account and parses results into a file<br><br>
- *
- * Major outline of this program can be attributed to RDeJourney from URL:<br>
- * http://namingexception.wordpress.com/2011/09/12/how-easy-to-make-your-own-twitter-client-using-java/<br><br>
- *
- * Program argument containing Twitter handle must be given prior to run time! e.g. "bmp_playlist" no quotes<br><br>
- *
- * The rest of the program is written by @author Blake Runkle
- *
- * @author Blake Runkle
- */
+
 public class SearchTweets {
-        /**
-         * Usage: java twitter4j.examples.search.SearchTweets [query]
-         *
-         * @param args search query
-         */
-        private final static String CONSUMER_KEY = "eMZTgNkkgi37aZmNOXeHPbDR1";
-        private final static String CONSUMER_KEY_SECRET = "yLoTulZJOdEUXOrFD52ttnITyBi5ZU6YftZnoCNGICJbqb0Oym";
-        //public static final String DATE_PATTERN = "(\\w{3}\\s){2}\\d{2}\\s(\\d{2}\\W){2}\\d{2}\\s\\w{3}\\s\\d{4}";
-        //public static final int TIME_STAMP_LENGTH = 28;
-        //public static final String DATE_FORMAT = "EEE MMM dd hh:mm:ss zzz yyyy";
+
+        private final static String CONSUMER_KEY = "myKey";
+        private final static String CONSUMER_KEY_SECRET = "mySecret";
         public static Twitter twitter = new TwitterFactory().getInstance();
  
-        /**
-         * Queries and stores songs from @bmp_playlist
-         *
-         * @param args Twitter handle to be queried
-         * @throws TwitterException
-         * @throws IOException
-         */
         public static void main(String[] args) throws TwitterException, IOException {
                 checkArgs(args);               
                 authenticateProgram(CONSUMER_KEY, CONSUMER_KEY_SECRET);
@@ -104,10 +79,7 @@ public class SearchTweets {
                 System.exit(0);
         } //end main
        
-        /**
-         * Check if program arguments exist before executing any further statements
-         * @param args Program arguments passed to "main" via command line or "Run Configurations.."
-         */
+
         public static void checkArgs(String[] args) {
                 if (args.length < 1) {
                         System.out.println("java twitter4j.examples.search.SearchTweets [query]");
@@ -115,15 +87,6 @@ public class SearchTweets {
                 }
         } //end checkArgs
        
-        /**
-         * Authenticates user credentials by applying unique key and secretKey. Will ask for
-         * one time PIN number from generated URL.
-         *
-         * @param consumerKey Unique key for Twitter account /@runklebc
-         * @param consumerKeySecret Unique keySecret for Twitter account /@runklebc
-         * @throws TwitterException
-         * @throws IOException
-         */
         public static void authenticateProgram(String consumerKey, String consumerKeySecret) throws TwitterException, IOException {
                 twitter.setOAuthConsumer(CONSUMER_KEY, CONSUMER_KEY_SECRET);
                 RequestToken requestToken = twitter.getOAuthRequestToken();
@@ -148,30 +111,13 @@ public class SearchTweets {
                 System.out.println("Access Token Secret: " + accessToken.getTokenSecret());
         } //end authenticateProgram    
        
-        /**
-         * Creates a file inside the current project
-         * @param filename Desired name of file
-         * @return File object
-         * @throws IOException
-         */
         public static File createFile(String filename) throws IOException {
                 File file = new File(filename);
                 file.createNewFile();
                
                 return file;
-        }
+        } //end createFile
  
-        /**
-         * Reads existing file contents into an ArrayList to maintain old content.
-         * Deletes existing file then recreates it with the same name to ensure
-         * duplicate items are not written to the file.
-         *  
-         * @param filename Name of file represented as a String
-         * @param f File to be deleted then recreated
-         * @param initialSongList ArrayList to store contents of file
-         * @return ArrayList of type String containing contents of previous file
-         * @throws IOException
-         */
         public static ArrayList<String> readFileIntoArrayList(String filename, File f, ArrayList<String> pArrayList) throws IOException {
                 BufferedReader br = new BufferedReader(new FileReader(f));
                 String line;
@@ -185,11 +131,6 @@ public class SearchTweets {
                 return pArrayList;
         } //end readContentsOfFileIntoInitialSongList
        
-        /**
-         * Verifies that a Tweet is a song/artist combo.
-         * @param tweet Tweet to be checked
-         * @return True if Tweet is a song, false otherwise.
-         */
         public static boolean isSong(String tweet) {
                 return !(tweet.charAt(0) == '@' ||
                          tweet.charAt(0) == '#' ||
@@ -197,20 +138,10 @@ public class SearchTweets {
                          tweet.substring(0, 6).equals("follow"));
         } //end isSong 
  
-        /**
-         * Remove all text from Tweet that is not song/artist combo
-         * @param tweet Tweet to be cleaned
-         * @return String containing only song/artist combo
-         */
         public static String cleanTweet(Status tweet) {                
                 return tweet.getText().substring(0, tweet.getText().lastIndexOf(" playing on"));
         } //end cleanTweet
         
-        /**
-         * Prints new songs added to file
-         * @param set Set containing items to be printed
-         * @param numNewSongs Number of songs to be printed
-         */
         public static void printNewSongs(Set<String> set, int numNewSongs) {
         	String[] setToArray = set.toArray(new String[set.size()]);
         	for(int i = setToArray.length-numNewSongs; i < set.size(); i++) {
