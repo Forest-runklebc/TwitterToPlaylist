@@ -53,7 +53,7 @@ public class SearchTweets {
                         int numSongsAfter = duplicateFreeSet.size();
                         int numNewSongs = numSongsAfter - numSongsBefore;
                        
-                        //Write the contents of duplicateFreeSet "bmp_playlist.txt"
+                        
                         for(String song : duplicateFreeSet) {                               
                                 pw.println(song);
                         }
