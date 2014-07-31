@@ -15,7 +15,7 @@ import java.util.Set;
  
 public class SearchTweets {
 
-        private final static String CONSUMER_KEY = "myKey";
+        private final static String CONSUMER_KEY        = "myKey";
         private final static String CONSUMER_KEY_SECRET = "mySecret";
         public static Twitter twitter = new TwitterFactory().getInstance();
  
