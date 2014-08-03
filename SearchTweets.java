@@ -145,5 +145,25 @@ public class SearchTweets {
         		System.out.println(setToArray[i]);
         	}
         } //end printNewSongs
+        
+            	public static ArrayList<String> cleanExistingFile(ArrayList<String> al) {
+    		ArrayList<String> result = new ArrayList<String>();
+    		for (int i = 0; i < al.size(); i++) {
+    			String s = al.get(i);
+    			if (!s.contains("http")       && 
+    				!s.contains("Like It")    && 
+    				!s.contains("play along") && 
+    				!s.contains("Ur Edm Bae")) {
+    				
+    				if (s.indexOf("#bpmBreaker") > 0 || s.indexOf("#BpmBreaker") > 0) {
+    					result.add(s.substring(0, s.indexOf("#") - 1));
+    				} else {
+    					result.add(s);
+    				}
+    			}
+    		}
+
+    		return result;
+    	} //end cleanExisitngFile
 
 }
