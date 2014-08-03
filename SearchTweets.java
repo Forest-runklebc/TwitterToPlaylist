@@ -146,7 +146,7 @@ public class SearchTweets {
         	}
         } //end printNewSongs
         
-            	public static ArrayList<String> cleanExistingFile(ArrayList<String> al) {
+        public static ArrayList<String> cleanExistingFile(ArrayList<String> al) {
     		ArrayList<String> result = new ArrayList<String>();
     		for (int i = 0; i < al.size(); i++) {
     			String s = al.get(i);
