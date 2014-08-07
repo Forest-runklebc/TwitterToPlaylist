@@ -34,8 +34,8 @@ public class SearchTweets {
          *
          * @param args search query
          */
-        private final static String CONSUMER_KEY = "eMZTgNkkgi37aZmNOXeHPbDR1";
-        private final static String CONSUMER_KEY_SECRET = "yLoTulZJOdEUXOrFD52ttnITyBi5ZU6YftZnoCNGICJbqb0Oym";
+        private final static String CONSUMER_KEY = "";
+        private final static String CONSUMER_KEY_SECRET = "";
         //public static final String DATE_PATTERN = "(\\w{3}\\s){2}\\d{2}\\s(\\d{2}\\W){2}\\d{2}\\s\\w{3}\\s\\d{4}";
         //public static final int TIME_STAMP_LENGTH = 28;
         //public static final String DATE_FORMAT = "EEE MMM dd hh:mm:ss zzz yyyy";
