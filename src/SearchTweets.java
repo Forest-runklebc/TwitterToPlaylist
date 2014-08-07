@@ -155,9 +155,9 @@ public class SearchTweets {
     		for (int i = 0; i < al.size(); i++) {
     			String s = al.get(i);
     			if (!s.contains("http")       && 
-    			   !s.contains("Like It")    && 
-    			!s.contains("play along") && 
-    			!s.contains("Ur Edm Bae")) {
+    			    !s.contains("Like It")    && 
+    			    !s.contains("play along") && 
+    			    !s.contains("Ur Edm Bae")) {
     				
     				if (s.indexOf("#bpmBreaker") > 0 || 
     					s.indexOf("#BpmBreaker") > 0 ||
