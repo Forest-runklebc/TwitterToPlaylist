@@ -36,9 +36,6 @@ public class SearchTweets {
          */
         private final static String CONSUMER_KEY = "";
         private final static String CONSUMER_KEY_SECRET = "";
-        //public static final String DATE_PATTERN = "(\\w{3}\\s){2}\\d{2}\\s(\\d{2}\\W){2}\\d{2}\\s\\w{3}\\s\\d{4}";
-        //public static final int TIME_STAMP_LENGTH = 28;
-        //public static final String DATE_FORMAT = "EEE MMM dd hh:mm:ss zzz yyyy";
         public static Twitter twitter = new TwitterFactory().getInstance();
  
         /**
@@ -78,13 +75,13 @@ public class SearchTweets {
                         } while ((query = result.nextQuery()) != null);
                        
                         initialSongList = cleanExistingFile(initialSongList);
+                        
                         //converting ArrayList to LinkedHashSet removes any duplicate Strings
                         Set<String> duplicateFreeSet = new LinkedHashSet<>(initialSongList);
                         
                         int numSongsAfter = duplicateFreeSet.size();
                         int numNewSongs = numSongsAfter - numSongsBefore;
-                       
-                        //Write the contents of duplicateFreeSet "bmp_playlist.txt"
+                        
                         for(String song : duplicateFreeSet) {                               
                                 pw.println(song);
                         }
